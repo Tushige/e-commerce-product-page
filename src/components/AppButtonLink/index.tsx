@@ -3,8 +3,13 @@ import { cn } from '../../utils';
 type AppButtonLinkProps = {
   href: string;
   className?: string;
+  text: string;
 };
-export default function AppButtonLink({ href, className }: AppButtonLinkProps) {
+export default function AppButtonLink({
+  href,
+  text,
+  className,
+}: AppButtonLinkProps) {
   return (
     <a
       href={href}
@@ -13,9 +18,7 @@ export default function AppButtonLink({ href, className }: AppButtonLinkProps) {
         className
       )}
     >
-      <span className="text-lg font-miera-demibold text-slate-700">
-        shop smoothies
-      </span>
+      <span className="text-lg font-miera-demibold text-slate-700">{text}</span>
     </a>
   );
 }

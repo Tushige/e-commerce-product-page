@@ -1,0 +1,151 @@
+import AppBackdrop from '../../components/AppBackdrop';
+import AppButtonLink from '../../components/AppButtonLink';
+import AppSectionDividerImage from '../../components/AppSectionDividerImage';
+import AppTypeWriter from '../../components/AppTypeWriter';
+import { cn } from '../../utils';
+import './styles.css';
+
+const animatedWords = ['delicious', 'healthy', 'portable'];
+
+const AppHero = ({}) => {
+  return (
+    <div className="relative text-4xl size-full flex justify-center">
+      <div className="container relative px-4 min-h-[100vh] flex items-center justify-center">
+        <HeroBackdropContent className="absolute top-0 left-0 size-full z-[0]" />
+        <div className="relative grid grid-cols-10">
+          <HeroContentSection className="col-span-10 lg:col-span-4 flex flex-col gap-y-4" />
+          <ProductSection className="relative order-first mb-12 col-span-10 lg:order-last lg:col-span-6 lg:mb-0" />
+        </div>
+      </div>
+      <AppSectionDividerImage className="absolute bottom-0 left-0 right-0" />
+    </div>
+  );
+};
+
+function ProductSection({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <AppBackdrop />
+      <div className="images flex items-center lg:items-start justify-center lg:justify-end">
+        <div className="image-1 animate-float z-[1]">
+          <img
+            src="images/sprout/strawberry.webp"
+            className="object-contain size-full max-w-[16rem] translate-x-[2rem] rotate-2"
+          />
+        </div>
+        <div
+          className="image-2 animate-float"
+          style={{
+            animationDelay: '2s',
+          }}
+        >
+          <img
+            src="images/sprout/blueberry.webp"
+            className="object-contain size-full max-w-[16rem] translate-x-[-2rem] rotate-6"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HeroContentSection({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <div className="lg:max-w-[24rem] font-miera-black text-center lg:text-left">
+        <div className="--section-accent">
+          <span className="--small-title-stars">
+            {/* TODO - add how many stars you got on Amazon */}
+          </span>
+        </div>
+        <div className="text-4xl lg:text-6xl">Superfood smoothies made</div>
+        <AppTypeWriter
+          words={animatedWords}
+          fps={10}
+          className="text-4xl lg:text-6xl"
+        />
+        <p className="text-2xl text-wrap font-miera-book mt-8 text-center lg:text-left">
+          nutritious & delicious smoothies that blend effortlessly into your
+          life
+        </p>
+        <div className="mt-8 flex justify-center lg:justify-start">
+          <div className="inline-block">
+            <AppButtonLink href="#" text="shop smoothies" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const backdropImages = [
+  'images/seed/banana-accent-graphic-2.webp',
+  'images/seed/blackberry-accent-graphic-2.webp',
+  'images/seed/blueberry-accent-graphic-5.webp',
+  'images/seed/mango-accent-graphic-2.webp',
+  'images/seed/blueberry-accent-graphic-6.webp',
+  'images/seed/strawberry-accent-graphic-4.webp',
+  'images/seed/pineapple-accent-graphic-2.webp',
+];
+
+function HeroBackdropContent({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <FloatingBackdropImage
+        src={backdropImages[0]}
+        className="w-[60px] lg:w-[100px] top-[15%] right-[10%]"
+      />
+      <FloatingBackdropImage
+        src={backdropImages[1]}
+        className="w-[60px] lg:w-[100px] top-[15%] left-[10%] lg:left-[40%]"
+      />
+      <FloatingBackdropImage
+        src={backdropImages[2]}
+        className="w-[60px] lg:w-[100px] top-[50%] left-[5%]"
+      />
+      <FloatingBackdropImage
+        src={backdropImages[3]}
+        className="w-[150px] lg:w-[250px] bottom-[37%] lg:bottom-[20%] right-[2%]"
+      />
+      <FloatingBackdropImage
+        src={backdropImages[4]}
+        className="w-[60px] lg:w-[100px] bottom-[14%] right-[20%]"
+      />
+      <FloatingBackdropImage
+        src={backdropImages[5]}
+        className="w-[60px] lg:w-[100px] bottom-[24%] left-[18%]"
+      />
+      <FloatingBackdropImage
+        src={backdropImages[6]}
+        className="w-[60px] lg:w-[100px] top-[10%] lgtop-[24%] right-[25%]"
+        isSpinning={true}
+      />
+    </div>
+  );
+}
+
+function FloatingBackdropImage({
+  src,
+  isSpinning,
+  className,
+}: {
+  src: string;
+  isSpinning?: boolean;
+  className?: string;
+}) {
+  return (
+    <img
+      src={src}
+      className={cn(
+        'animate-float absolute object-contain',
+        { 'animate-spin': isSpinning },
+        className
+      )}
+      style={{
+        animationDelay: `${Math.round(Math.random() * 5)}s`,
+      }}
+    />
+  );
+}
+
+export default AppHero;

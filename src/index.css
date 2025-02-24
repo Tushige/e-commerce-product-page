@@ -35,6 +35,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
 }
 
 @theme {
@@ -44,6 +47,11 @@
   --font-miera-black: 'miera-black', 'sans-serif';
   --font-miera-book: 'miera-book', 'sans-serif';
   --drop-shadow-button: rgba(0, 0, 0, 0.2) 0px 5px 9px;
+  --color-backdrop-accent: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0) 100%
+  );
+  --color-primary: #d61355;
 
   --animate-float: float 6s infinite ease-in-out;
   @keyframes float {
@@ -64,6 +72,15 @@
     }
     100% {
       opacity: 1;
+    }
+  }
+  --animate-spin: spin 10s linear infinite;
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 }
