@@ -5,21 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import AppArrowIcon from '../AppArrowIcon';
 
-function getMinFromSet(s: Set<number>) {
-  let minVal = Infinity;
-  for (const val of s) {
-    minVal = Math.min(minVal, val);
-  }
-  return minVal;
-}
-function getMaxFromSet(s: Set<number>) {
-  let maxVal = -Infinity;
-  for (const val of s) {
-    maxVal = Math.max(maxVal, val);
-  }
-  return maxVal;
-}
-
 type Product = {
   id: string;
   imageSrc: string;
@@ -36,6 +21,21 @@ type Product = {
     backgroundColor: string;
   };
 };
+
+function getMinFromSet(s: Set<number>) {
+  let minVal = Infinity;
+  for (const val of s) {
+    minVal = Math.min(minVal, val);
+  }
+  return minVal;
+}
+function getMaxFromSet(s: Set<number>) {
+  let maxVal = -Infinity;
+  for (const val of s) {
+    maxVal = Math.max(maxVal, val);
+  }
+  return maxVal;
+}
 
 export default function AppProductCarousel({
   products = [],
@@ -116,7 +116,7 @@ export default function AppProductCarousel({
                 }
               : {}
           }
-          className="text-black cursor-pointer disabled:cursor-auto p-2 lg:p-4 rounded-full"
+          className="text-black cursor-pointer hover:bg-zinc-200 disabled:bg-transparent active:bg-zinc-400 duration-300 disabled:cursor-auto p-2 lg:p-4 rounded-full"
           onClick={goPrev}
           disabled={prevDisabled}
         >
@@ -129,9 +129,8 @@ export default function AppProductCarousel({
         <motion.button
           whileTap={{
             scale: 0.9,
-            backgroundColor: 'oklch(0.37 0.013 285.805)',
           }}
-          className="text-black cursor-pointer disabled:cursor-auto p-2 lg:p-4 rounded-full"
+          className="text-black cursor-pointer hover:bg-zinc-200 disabled:bg-transparent active:bg-zinc-400 duration-300 disabled:cursor-auto p-2 lg:p-4 rounded-full"
           style={{
             translateX: '0',
           }}
@@ -155,7 +154,7 @@ export default function AppProductCarousel({
                 productRefs.current[idx] = el;
               }}
             >
-              <ProductCard product={product} idx={idx} />
+              <ProductCard product={product} />
             </li>
           ))}
         </ul>
@@ -166,7 +165,7 @@ export default function AppProductCarousel({
 
 const ANIMATION_SHIFT_Y = 30;
 
-function ProductCard({ product, idx }: { product: Product; idx: number }) {
+function ProductCard({ product }: { product: Product }) {
   const childVariants = {
     rest: {
       y: 0,
