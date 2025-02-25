@@ -53,8 +53,11 @@
   );
   --color-primary: oklch(0.75 0.183 55.934); /* orange */
   --color-primary-foreground: oklch(0.21 0.006 285.885); /*black*/
-  --color-secondary: oklch(0.274 0.006 286.033);
+  --color-secondary: oklch(0.274 0.006 286.033); /*lighter black*/
+  --color-tertiary: oklch(0.551 0.027 264.364); /*gray*/
+  --color-accent: #51a2ff; /*blue*/
   --animate-float: float 6s infinite ease-in-out;
+
   @keyframes float {
     0% {
       transform: translate(0);

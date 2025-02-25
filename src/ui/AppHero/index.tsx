@@ -133,7 +133,7 @@ function FloatingBackdropImage({
     <img
       src={src}
       className={cn(
-        'animate-float absolute object-contain',
+        'animate-float absolute object-contain drop-shadow-button',
         { 'animate-spin': isSpinning },
         className
       )}

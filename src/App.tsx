@@ -2,6 +2,7 @@ import './App.css';
 import AppNotificationBar from './components/AppNotificationBar';
 import AppSectionDividerImage from './components/AppSectionDividerImage';
 import AppContainerLayout from './components/layout/AppContainerLayout';
+import AppFooter from './ui/AppFooter';
 import AppHeader from './ui/AppHeader';
 import AppHero from './ui/AppHero';
 import AppInfoSection from './ui/AppInfoSection';
@@ -16,7 +17,7 @@ const notificationItems = [
 
 function App() {
   return (
-    <div className="size-full bg-white">
+    <div className="size-full bg-white font-miera-regular">
       <div className="size-full min-h-screen bg-linear-to-r/oklch from-indigo-500 to-teal-400">
         <AppNotificationBar
           items={notificationItems}
@@ -35,10 +36,10 @@ function App() {
       <AppContainerLayout className="bg-white mt-12">
         <AppNewProductsList products={newProductsList} />
       </AppContainerLayout>
-      <AppContainerLayout className="bg-white mt-12">
+      <AppContainerLayout className="bg-white mt-12 mb-12">
         <AppInfoSection />
       </AppContainerLayout>
-      <div className="to-delete w-full min-h-[100vh] bg-white" />
+      <AppFooter />
     </div>
   );
 }
