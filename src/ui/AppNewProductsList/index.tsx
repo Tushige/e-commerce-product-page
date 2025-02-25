@@ -1,11 +1,69 @@
-import { JSXElementConstructor } from 'react';
+import { JSXElementConstructor, useRef, useState } from 'react';
 import AppBadge from '../../components/AppBadge';
 import AppSectionTitle from '../../components/AppSectionTitle';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { cn, getRandomint } from '../../utils';
 
+const DEFAULT_CONTAINER_HEIGHT = 3800;
+
+const floatingImages = [
+  {
+    src: 'images/seed/blackberry-accent-graphic-2.webp',
+    className: 'w-[70px] lg:w-[100px]',
+  },
+  {
+    src: 'images/seed/mango-accent-graphic-2.webp',
+    className: 'w-[100px] lg:w-[140px]',
+  },
+  {
+    src: 'images/seed/strawberry-pineapple-accent-graphics-2.webp',
+    className: 'w-[100px] lg:w-[140px]',
+  },
+  {
+    src: 'images/seed/pineapple-accent-graphic-2.webp',
+    className: 'w-[100px] lg:w-[140px]',
+  },
+];
+const floatingImages2 = [
+  {
+    src: 'images/seed/blackberry-accent-graphic-2.webp',
+    className: 'w-[70px] lg:w-[100px]',
+  },
+  {
+    src: 'images/seed/strawberry-accent-graphic-4.webp',
+    className: 'w-[70px] lg:w-[140px]',
+  },
+  {
+    src: 'images/seed/blackberry-accent-graphic-2.webp',
+    className: 'w-[70px] lg:w-[140px]',
+  },
+  {
+    src: 'images/seed/strawberry-accent-graphic-4.webp',
+    className: 'w-[70px] lg:w-[140px]',
+  },
+];
 export default function AppNewProductsList({ products }) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="size-full">
+    <div ref={scrollContainerRef} className="size-full relative">
+      <div className="--fruits absolute top-0 size-full overflow-visible">
+        <ParallaxFruits
+          scrollContainerRef={scrollContainerRef}
+          items={floatingImages}
+          yOffset="0%"
+        />
+        <ParallaxFruits
+          scrollContainerRef={scrollContainerRef}
+          items={floatingImages}
+          yOffset="50%"
+        />
+        <ParallaxFruits
+          scrollContainerRef={scrollContainerRef}
+          items={floatingImages2}
+          yOffset="100%"
+        />
+      </div>
       <AppSectionTitle
         title="Introducing"
         className="my-12 mb-24 text-center"
@@ -95,7 +153,7 @@ function ProductItem({ product }: ProductItemProps) {
                   className="flex gap-2 items-center pb-4 border-b-1 border-b-white"
                 >
                   <div
-                    className="bg-primary rounded rounded-full p-4"
+                    className="bg-primary rounded-full p-4"
                     style={{
                       backgroundColor: feature.iconBgColor || '#fff',
                     }}
@@ -121,5 +179,94 @@ function ProductItem({ product }: ProductItemProps) {
         </div>
       </div>
     </div>
+  );
+}
+type ParallaxFruitsProps = {
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
+  yOffset: string;
+  items: {
+    src: string;
+    className: string;
+  }[];
+};
+function ParallaxFruits({
+  scrollContainerRef,
+  items,
+  yOffset,
+}: ParallaxFruitsProps) {
+  return (
+    <div
+      className="--fruits-container absolute bottom-0 size-full z-[2]"
+      style={{
+        transform: `translateY(${yOffset})`,
+      }}
+    >
+      <div className="absolute bottom-0 w-full flex flex-col">
+        {items.map(({ src, className }, idx) => (
+          <ParallaxImage
+            scrollContainerRef={scrollContainerRef}
+            src={src}
+            idx={idx}
+            className={className}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * each image scrolls at a different speed.
+ * There's a 50% chance they'll spin
+ */
+type ParallaxImageProps = {
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
+  src: string;
+  idx: number;
+  className: string;
+};
+function ParallaxImage({
+  scrollContainerRef,
+  src,
+  idx,
+  className,
+}: ParallaxImageProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { scrollY, scrollYProgress } = useScroll({
+    target: scrollContainerRef,
+    offset: ['start end', 'end start'],
+  });
+  const [multiplier, _] = useState(getRandomint(1.2, 1.9));
+  const translateY = useTransform(scrollYProgress, (progress) => {
+    if (!scrollContainerRef.current)
+      return -progress * DEFAULT_CONTAINER_HEIGHT;
+    const { height } = scrollContainerRef.current.getBoundingClientRect();
+    return -progress * height * multiplier;
+  });
+  const opacityRatio = useTransform(scrollY, (progress) => {
+    if (!containerRef.current) return 0;
+    const { y } = containerRef.current.getBoundingClientRect();
+    return y / progress;
+  });
+  const opacityValue = useTransform(opacityRatio, [0, 0.1], [0, 1]);
+  return (
+    <motion.div
+      className={cn('w-full flex flex-col')}
+      style={{
+        x: idx % 2 === 0 ? '-10%' : '10%',
+        y: translateY,
+        opacity: opacityValue,
+      }}
+      ref={containerRef}
+    >
+      <div
+        className={cn('w-fit', {
+          'animate-spin': getRandomint(0, 1) >= 0.5,
+          'self-end': idx % 2 !== 0,
+        })}
+      >
+        <img src={src} className={className} />
+      </div>
+    </motion.div>
   );
 }

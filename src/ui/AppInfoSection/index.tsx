@@ -9,12 +9,10 @@ export default function AppInfoSection() {
           key={card.id}
           className="w-full"
           initial={{
-            y: 50,
-            opacity: 0.8,
-            scale: 1.2,
+            y: 100,
+            opacity: 0,
           }}
           whileInView={{
-            scale: 1,
             y: 0,
             opacity: 1,
             transition: {
