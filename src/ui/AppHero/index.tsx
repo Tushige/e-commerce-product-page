@@ -1,6 +1,5 @@
 import AppBackdrop from '../../components/AppBackdrop';
 import AppButtonLink from '../../components/AppButtonLink';
-import AppSectionDividerImage from '../../components/AppSectionDividerImage';
 import AppTypeWriter from '../../components/AppTypeWriter';
 import { cn } from '../../utils';
 import './styles.css';
@@ -9,15 +8,12 @@ const animatedWords = ['delicious', 'healthy', 'portable'];
 
 const AppHero = ({}) => {
   return (
-    <div className="relative text-4xl size-full flex justify-center">
-      <div className="container relative px-4 min-h-[100vh] flex items-center justify-center">
-        <HeroBackdropContent className="absolute top-0 left-0 size-full z-[0]" />
-        <div className="relative grid grid-cols-10">
-          <HeroContentSection className="col-span-10 lg:col-span-4 flex flex-col gap-y-4" />
-          <ProductSection className="relative order-first mb-12 col-span-10 lg:order-last lg:col-span-6 lg:mb-0" />
-        </div>
+    <div className="size-full min-h-[90vh] flex flex-col items-center justify-center relative">
+      <HeroBackdropContent className="absolute top-0 left-0 size-full z-[0]" />
+      <div className="relative grid grid-cols-10">
+        <HeroContentSection className="col-span-10 lg:col-span-4 flex flex-col gap-y-4" />
+        <ProductSection className="relative order-first mb-12 col-span-10 lg:order-last lg:col-span-6 lg:mb-0" />
       </div>
-      <AppSectionDividerImage className="absolute bottom-0 left-0 right-0" />
     </div>
   );
 };
@@ -30,7 +26,7 @@ function ProductSection({ className }: { className?: string }) {
         <div className="image-1 animate-float z-[1]">
           <img
             src="images/sprout/strawberry.webp"
-            className="object-contain size-full max-w-[16rem] translate-x-[2rem] rotate-2"
+            className="object-contain size-full max-w-[16rem] translate-x-[2rem] rotate-2 drop-shadow-button"
           />
         </div>
         <div
@@ -41,7 +37,7 @@ function ProductSection({ className }: { className?: string }) {
         >
           <img
             src="images/sprout/blueberry.webp"
-            className="object-contain size-full max-w-[16rem] translate-x-[-2rem] rotate-6"
+            className="object-contain size-full max-w-[16rem] translate-x-[-2rem] rotate-6 drop-shadow-xl"
           />
         </div>
       </div>
@@ -105,11 +101,11 @@ function HeroBackdropContent({ className }: { className?: string }) {
       />
       <FloatingBackdropImage
         src={backdropImages[3]}
-        className="w-[150px] lg:w-[250px] bottom-[37%] lg:bottom-[20%] right-[2%]"
+        className="w-[150px] lg:w-[250px] bottom-[30%] lg:bottom-[10%] right-[2%]"
       />
       <FloatingBackdropImage
         src={backdropImages[4]}
-        className="w-[60px] lg:w-[100px] bottom-[14%] right-[20%]"
+        className="w-[60px] lg:w-[100px] bottom-[14%] right-[30%]"
       />
       <FloatingBackdropImage
         src={backdropImages[5]}

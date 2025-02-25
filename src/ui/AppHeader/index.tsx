@@ -10,7 +10,7 @@ export default function AppHeader({ className }: { className?: string }) {
           <a href="#">our story</a>
         </div>
         <div className="basis-128 flex justify-center">
-          <SproutLogo />
+          <SproutLogo className="w-[8rem] lg:w-[12rem]" />
         </div>
         <div className="basis-64 text-black flex items-center justify-end gap-[1rem]">
           <a href="#">subscribe & save</a>

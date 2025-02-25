@@ -51,9 +51,9 @@
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0) 100%
   );
-  --color-primary: oklch(0.75 0.183 55.934);
-  --color-primary-foreground: oklch(0.21 0.006 285.885);
-
+  --color-primary: oklch(0.75 0.183 55.934); /* orange */
+  --color-primary-foreground: oklch(0.21 0.006 285.885); /*black*/
+  --color-secondary: oklch(0.274 0.006 286.033);
   --animate-float: float 6s infinite ease-in-out;
   @keyframes float {
     0% {
