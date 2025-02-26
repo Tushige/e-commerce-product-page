@@ -1,10 +1,14 @@
 import AppLinkCard from '../../components/AppLinkCard';
-import { infoCards } from '@data/info-cards';
 import { motion } from 'motion/react';
+import { use3VueData } from '../../api/use3VueData';
 export default function AppInfoSection() {
+  const { module2, isLoading, error } = use3VueData();
+  if (isLoading) {
+    return <div>loading</div>;
+  }
   return (
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-12 lg:mt-[24rem]">
-      {infoCards.map((card, idx) => (
+      {module2.map((card, idx) => (
         <motion.li
           key={card.id}
           className="w-full"

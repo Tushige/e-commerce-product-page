@@ -3,6 +3,7 @@ import AppBadge from '../../components/AppBadge';
 import AppSectionTitle from '../../components/AppSectionTitle';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { cn, getRandomint } from '../../utils';
+import { use3VueData } from '../../api/use3VueData';
 
 const DEFAULT_CONTAINER_HEIGHT = 3800;
 
@@ -42,11 +43,15 @@ const floatingImages2 = [
     className: 'w-[70px] lg:w-[140px]',
   },
 ];
-export default function AppNewProductsList({ products }) {
+export default function AppNewProductsList() {
+  const { module1, isLoading } = use3VueData();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  if (isLoading) {
+    return <div className="size-full text-2xl font-miera-bold">loading</div>;
+  }
   return (
-    <div ref={scrollContainerRef} className="size-full relative">
+    <section ref={scrollContainerRef} className="size-full relative">
       <div className="--fruits absolute top-0 size-full overflow-y-hidden overflow-x-clip">
         <ParallaxFruits
           scrollContainerRef={scrollContainerRef}
@@ -68,12 +73,12 @@ export default function AppNewProductsList({ products }) {
         title="Introducing"
         className="my-12 mb-24 text-center"
       />
-      <div className="flex flex-col gap-[12rem] lg:gap-[24rem]">
-        {products.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
+      <div className="flex flex-col gap-[4rem] lg:gap-[24rem]">
+        {module1.subContent.map((product) => {
+          return <ProductItem key={product.id} product={product} />;
+        })}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -81,9 +86,9 @@ type ProductItemProps = {
   product: {
     id: string;
     title: string;
-    subtitle: string;
+    description: string;
     productImageSrc: string;
-    backgroundImageSrc: string;
+    imageUrl: string;
     features: [
       {
         text: string;
@@ -95,17 +100,17 @@ type ProductItemProps = {
 };
 
 function ProductItem({ product }: ProductItemProps) {
-  const { title, subtitle, backgroundImageSrc, productImageSrc, features } =
-    product;
+  const { title, description, imageUrl, productImageSrc, features } = product;
+
   return (
     <div className="grid grid-cols-10 justify-items-stretch lg:justify-items-center">
-      <div className="col-span-10 lg:col-span-5 flex flex-col gap-2 items-center lg:items-start">
+      <div className="col-span-10 lg:col-span-5 flex flex-col gap-2 items-center lg:items-start transition-all duration-300">
         <AppBadge className="inline-block">Healthy</AppBadge>
         <h2 className="text-primary-foreground font-miera-demibold text-2xl md:text-5xl lg:text-6xl lg:max-w-[23rem] text-center lg:text-left">
           {title}
         </h2>
         <p className="text-secondary font-demibold text-xl lg:text-2xl lg:max-w-[23rem] text-center lg:text-left">
-          {subtitle}
+          {description}
         </p>
       </div>
       <motion.div
@@ -143,7 +148,7 @@ function ProductItem({ product }: ProductItemProps) {
       </motion.div>
       <div className="col-span-10 lg:col-span-5 grid justify-items-stretch">
         <div className="relative bg-image h-auto object-cover rounded-3xl overflow-hidden mt-8 lg:mt-0">
-          <img src={backgroundImageSrc} className="size-full brightness-50" />
+          <img src={imageUrl} className="size-full brightness-50" />
           <ul className="absolute top-[50%] left-[50%] lg:left-[60%] xl:left-[50%] translate-[-50%] flex flex-col gap-4 w-full lg:w-auto p-4 lg:p-0">
             {features.map((feature, idx) => {
               const Icon = feature.icon;
@@ -204,6 +209,7 @@ function ParallaxFruits({
       <div className="absolute bottom-0 w-full flex flex-col">
         {items.map(({ src, className }, idx) => (
           <ParallaxImage
+            key={`${src}-${idx}`}
             scrollContainerRef={scrollContainerRef}
             src={src}
             idx={idx}

@@ -1,5 +1,4 @@
 import './App.css';
-import AppNotificationBar from './components/AppNotificationBar';
 import AppSectionDividerImage from './components/AppSectionDividerImage';
 import AppContainerLayout from './components/layout/AppContainerLayout';
 import AppLenisLayout from './components/layout/AppLenisLayout';
@@ -9,7 +8,6 @@ import AppHero from './ui/AppHero';
 import AppInfoSection from './ui/AppInfoSection';
 import AppNewProductsList from './ui/AppNewProductsList';
 import AppProductsList from './ui/AppProductsList';
-import { newProductsList } from '@data/new-product-data';
 
 function App() {
   return (
@@ -27,7 +25,7 @@ function App() {
             <AppProductsList className="relative z-[1]" />
           </div>
           <AppContainerLayout className="bg-white mt-12">
-            <AppNewProductsList products={newProductsList} />
+            <AppNewProductsList />
           </AppContainerLayout>
           <AppContainerLayout className="bg-white mt-12 mb-12">
             <AppInfoSection />

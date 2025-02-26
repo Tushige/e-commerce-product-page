@@ -16,7 +16,7 @@ export default function AppSectionTitle({
   return (
     <div {...props}>
       {badgeText && <AppBadge>{badgeText}</AppBadge>}
-      <h2 className="text-zinc-900 font-miera-bold text-4xl md:text-6xl lg:text-8xl">
+      <h2 className="text-zinc-900 font-miera-bold text-4xl md:text-5xl lg:text-6xl">
         {title}
       </h2>
       {subtitle && (

@@ -1,7 +1,6 @@
-import AppBadge from '../../components/AppBadge';
 import AppProductCarousel from '../../components/AppProductCarousel';
 
-import { productList } from '@data/product-data';
+import { productList } from '@data/mock-data';
 import { cn } from '../../utils';
 import AppSectionTitle from '../../components/AppSectionTitle';
 
@@ -17,7 +16,7 @@ export default function AppProductsList({ className }: AppProductsListProps) {
       )}
     >
       <AppSectionTitle
-        title="Discover our Lineup"
+        title="Discover our Products"
         subtitle="Where nature meets health"
         badgeText="best sellers"
         className="flex flex-col items-center"

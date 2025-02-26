@@ -62,7 +62,7 @@ const sections = [
 ];
 export default function AppFooter() {
   return (
-    <section className="bg-accent p-8 rounded-t-[2rem]">
+    <section className="bg-accent p-4 lg:p-8 rounded-t-[2rem]">
       <div className="grid grid-cols-12 text-primary-foreground bg-white p-8 rounded-[2rem]">
         <div className="col-span-12 w-full max-w-[500px] items-stretch justify-self-center lg:justify-self-start lg:col-span-4 flex flex-col gap-2 pr-0 lg:pr-12">
           <h2 className="text-2xl lg:text-4xl font-miera-demibold">
