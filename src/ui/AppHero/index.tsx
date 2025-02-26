@@ -1,3 +1,4 @@
+import { motion, stagger } from 'motion/react';
 import AppBackdrop from '../../components/AppBackdrop';
 import AppButtonLink from '../../components/AppButtonLink';
 import AppTypeWriter from '../../components/AppTypeWriter';
@@ -50,9 +51,21 @@ function HeroContentSection({ className }: { className?: string }) {
     <div className={className}>
       <div className="lg:max-w-[24rem] font-miera-black text-center lg:text-left">
         <div className="--section-accent">
-          <span className="--small-title-stars">
-            {/* TODO - add how many stars you got on Amazon */}
-          </span>
+          <div className="flex gap-2 justify-center lg:justify-start items-center">
+            <div className="flex">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <img key={i} src="images/star.svg" className="size-3" />
+              ))}
+            </div>
+            <span className="text-sm font-miera-demibold">
+              9,000+ 5 star reviews on{' '}
+            </span>
+            <img
+              src="images/icons/amazon-2.svg"
+              width="48px"
+              className="translate-y-[4px]"
+            />
+          </div>
         </div>
         <div className="text-4xl lg:text-6xl">Superfood smoothies made</div>
         <AppTypeWriter

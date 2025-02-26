@@ -47,7 +47,7 @@ export default function AppNewProductsList({ products }) {
 
   return (
     <div ref={scrollContainerRef} className="size-full relative">
-      <div className="--fruits absolute top-0 size-full overflow-visible">
+      <div className="--fruits absolute top-0 size-full overflow-y-hidden overflow-x-clip">
         <ParallaxFruits
           scrollContainerRef={scrollContainerRef}
           items={floatingImages}
@@ -153,23 +153,23 @@ function ProductItem({ product }: ProductItemProps) {
                   className="flex gap-2 items-center pb-4 border-b-1 border-b-white"
                 >
                   <div
-                    className="bg-primary rounded-full p-4"
+                    className="bg-primary rounded-full p-2 lg:p-4"
                     style={{
                       backgroundColor: feature.iconBgColor || '#fff',
                     }}
                   >
                     <Icon
-                      width="40px"
-                      height="40px"
+                      width="36px"
+                      height="36px"
                       className="hidden lg:inline-block"
                     />
                     <Icon
-                      width="20px"
-                      height="20px"
+                      width="24px"
+                      height="24px"
                       className="inline-block lg:hidden"
                     />
                   </div>
-                  <span className="font-miera-demibold text-xl">
+                  <span className="font-miera-demibold text-lg lg:text-xl">
                     {feature.text}
                   </span>
                 </li>
@@ -196,7 +196,7 @@ function ParallaxFruits({
 }: ParallaxFruitsProps) {
   return (
     <div
-      className="--fruits-container absolute bottom-0 size-full z-[2]"
+      className="--fruits-container absolute bottom-0 size-full z-[2] pointer-events-none"
       style={{
         transform: `translateY(${yOffset})`,
       }}
@@ -248,12 +248,16 @@ function ParallaxImage({
     const { y } = containerRef.current.getBoundingClientRect();
     return y / progress;
   });
-  const opacityValue = useTransform(opacityRatio, [0, 0.1], [0, 1]);
+  const opacityValue = useTransform(
+    opacityRatio,
+    [0, 0.1, 0.7, 1],
+    [0, 1, 1, 0]
+  );
   return (
     <motion.div
       className={cn('w-full flex flex-col')}
       style={{
-        x: idx % 2 === 0 ? '-10%' : '10%',
+        x: 0,
         y: translateY,
         opacity: opacityValue,
       }}

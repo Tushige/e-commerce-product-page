@@ -31,7 +31,9 @@ export default function AppAccordion({ sections }: AppAccordionProps) {
                 console.log(newOpenSections);
               }}
             >
-              <span className="font-miera-demibold text-xl py-4">{title}</span>
+              <span className="font-miera-demibold text-lg lg:text-xl py-4">
+                {title}
+              </span>
               <AppPlusIcon
                 aria-hidden={true}
                 className={[

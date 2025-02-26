@@ -15,7 +15,7 @@ export default function AppContainerLayout({
       )}
     >
       <div
-        className="container relative px-4 lg:px-8 flex items-center justify-center"
+        className="size-full container relative px-4 lg:px-8 flex items-center justify-center"
         {...props}
       />
     </div>

@@ -64,7 +64,7 @@ export default function AppFooter() {
     <section className="bg-accent p-8 rounded-t-[2rem]">
       <div className="grid grid-cols-12 text-primary-foreground bg-white p-8 rounded-[2rem]">
         <div className="col-span-12 max-w-[500px] lg:col-span-4 flex flex-col gap-2 pr-12">
-          <h2 className="text-4xl font-miera-demibold">
+          <h2 className="text-2xl lg:text-4xl font-miera-demibold">
             get 10% off your order!
           </h2>
           <p>Sign up for email and get 10% off your first order</p>
