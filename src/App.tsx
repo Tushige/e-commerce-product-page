@@ -14,7 +14,7 @@ function App() {
     <AppLenisLayout>
       <div className="size-full bg-white font-miera-regular">
         <div className="size-full min-h-screen">
-          <div className="size-full bg-linear-to-r/oklch from-indigo-500 to-teal-400">
+          <div className="size-full gradient">
             <AppHeader />
             <AppContainerLayout>
               <AppHero />

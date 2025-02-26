@@ -12,17 +12,17 @@ export const module1Extension = [
       {
         text: 'vibrant, elevated flavors',
         icon: StrawberryLogo,
-        iconBgColor: 'oklch(0.645 0.246 16.439)',
+        iconBgColor: '#ff2056',
       },
       {
         text: 'packed full of superfoods',
         icon: BlueberryLogo,
-        iconBgColor: 'oklch(0.707 0.165 254.624)',
+        iconBgColor: '#51a2ff',
       },
       {
         text: 'healthy',
         icon: AppleLogo,
-        iconBgColor: 'oklch(0.768 0.233 130.85)',
+        iconBgColor: '#7ccf00',
       },
     ],
   },
@@ -33,17 +33,17 @@ export const module1Extension = [
       {
         text: 'vibrant, elevated flavors',
         icon: StrawberryLogo,
-        iconBgColor: 'oklch(0.645 0.246 16.439)',
+        iconBgColor: '#ff2056',
       },
       {
         text: 'packed full of superfoods',
         icon: BlueberryLogo,
-        iconBgColor: 'oklch(0.707 0.165 254.624)',
+        iconBgColor: '#51a2ff',
       },
       {
         text: 'healthy',
         icon: AppleLogo,
-        iconBgColor: 'oklch(0.768 0.233 130.85)',
+        iconBgColor: '#7ccf00',
       },
     ],
   },
@@ -54,17 +54,17 @@ export const module1Extension = [
       {
         text: 'vibrant, elevated flavors',
         icon: StrawberryLogo,
-        iconBgColor: 'oklch(0.645 0.246 16.439)',
+        iconBgColor: '#ff2056',
       },
       {
         text: 'packed full of superfoods',
         icon: BlueberryLogo,
-        iconBgColor: 'oklch(0.707 0.165 254.624)',
+        iconBgColor: '#51a2ff',
       },
       {
         text: 'healthy',
         icon: AppleLogo,
-        iconBgColor: 'oklch(0.768 0.233 130.85)',
+        iconBgColor: '#7ccf00',
       },
     ],
   },
@@ -83,7 +83,7 @@ const createBlueberry = () => ({
     bottom: 'images/seed/banana-accent-graphic-2.webp',
   },
   styles: {
-    backgroundColor: 'oklch(0.75 0.183 55.934)',
+    backgroundColor: '#ff8904',
   },
 });
 const createStrawberry = () => ({
@@ -99,7 +99,7 @@ const createStrawberry = () => ({
     bottom: 'images/seed/banana-accent-graphic-2.webp',
   },
   styles: {
-    backgroundColor: 'oklch(0.768 0.233 130.85)',
+    backgroundColor: '#7ccf00',
   },
 });
 const createMango = () => ({
@@ -115,7 +115,7 @@ const createMango = () => ({
     bottom: 'images/seed/banana-accent-graphic-2.webp',
   },
   styles: {
-    backgroundColor: 'oklch(0.707 0.165 254.624)',
+    backgroundColor: '#51a2ff',
   },
 });
 
