@@ -236,7 +236,7 @@ function ParallaxImage({
     target: scrollContainerRef,
     offset: ['start end', 'end start'],
   });
-  const [multiplier, _] = useState(getRandomint(1.2, 1.9));
+  const [multiplier, _] = useState(getRandomint(1.2, 1.6));
   const translateY = useTransform(scrollYProgress, (progress) => {
     if (!scrollContainerRef.current)
       return -progress * DEFAULT_CONTAINER_HEIGHT;
@@ -248,11 +248,7 @@ function ParallaxImage({
     const { y } = containerRef.current.getBoundingClientRect();
     return y / progress;
   });
-  const opacityValue = useTransform(
-    opacityRatio,
-    [0, 0.1, 0.7, 1],
-    [0, 1, 1, 0]
-  );
+  const opacityValue = useTransform(opacityRatio, [0, 0.1], [0, 1]);
   return (
     <motion.div
       className={cn('w-full flex flex-col')}
@@ -264,7 +260,7 @@ function ParallaxImage({
       ref={containerRef}
     >
       <div
-        className={cn('w-fit', {
+        className={cn('w-fit drop-shadow-xl', {
           'animate-spin': getRandomint(0, 1) >= 0.5,
           'self-end': idx % 2 !== 0,
         })}

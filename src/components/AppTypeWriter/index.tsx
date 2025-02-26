@@ -1,5 +1,6 @@
+import { useRef, useState } from 'react';
 import { animate } from 'motion';
-import { motion, useMotionValue, useTransform } from 'motion/react';
+import { motion, useInView, useMotionValue, useTransform } from 'motion/react';
 import { useEffect } from 'react';
 import { cn } from '../../utils';
 
@@ -16,21 +17,21 @@ import { cn } from '../../utils';
  * ```tsx
  * <AppTypeWriter
  *   words={['Hello', 'World', 'React']}
- *   speed={10}
  * />
  * ```
  */
 type AppTypeWriterProps = {
   words: String[];
-  fps: number;
   className?: String;
+  repeat?: number;
 };
 
 export default function AppTypeWriter({
   words,
-  fps,
   className,
+  repeat = Infinity,
 }: AppTypeWriterProps) {
+  const [isComplete, setIsComplete] = useState(false);
   const wordIndex = useMotionValue(0);
   const word = useTransform(wordIndex, (last) => words[last] || '');
   const count = useMotionValue(0);
@@ -41,11 +42,12 @@ export default function AppTypeWriter({
   const updatedThisRound = useMotionValue(true); // helps us figure out if we're starting a new text animation
 
   useEffect(() => {
-    const controls = animate(count, fps, {
+    let len = words.reduce((aggr, curr) => Math.max(aggr, curr.length), 0);
+    const controls = animate(count, len, {
       type: 'tween',
       duration: 1,
       ease: 'easeInOut',
-      repeat: Infinity,
+      repeat: repeat,
       repeatType: 'reverse',
       repeatDelay: 1,
       onUpdate(last) {
@@ -57,13 +59,16 @@ export default function AppTypeWriter({
         }
       },
     });
+    controls.then(() => {
+      setIsComplete(true);
+    });
     return controls.stop;
   }, []);
 
   return (
     <div className={cn('', className)}>
-      <motion.span className="underline">{displayText}</motion.span>
-      <span className="animate-blink">|</span>
+      <motion.span>{displayText}</motion.span>
+      {!isComplete && <span className="animate-blink">|</span>}
     </div>
   );
 }

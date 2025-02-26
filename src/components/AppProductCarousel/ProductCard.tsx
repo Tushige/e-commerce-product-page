@@ -6,6 +6,11 @@ import { cn } from '../../utils';
 const ANIMATION_SHIFT_Y = 30;
 
 export function ProductCard({ product }: { product: Product }) {
+  const fruitTransition = {
+    type: 'spring',
+    duration: 0.5,
+    bounce: 0.4,
+  };
   const childVariants = {
     rest: {
       y: 0,
@@ -67,8 +72,8 @@ export function ProductCard({ product }: { product: Product }) {
       y: 0,
       transition: {
         duration: 0.3,
-        type: 'tween',
-        ease: [0.5, 0, 0, 1],
+        type: 'spring',
+        bounce: 0.4,
       },
     },
     hover: {
@@ -76,8 +81,8 @@ export function ProductCard({ product }: { product: Product }) {
       y: -ANIMATION_SHIFT_Y,
       transition: {
         duration: 0.3,
-        type: 'tween',
-        ease: [0.5, 0, 0, 1],
+        type: 'spring',
+        bounce: 0.4,
       },
     },
   };
@@ -103,8 +108,8 @@ export function ProductCard({ product }: { product: Product }) {
               scale: 0,
               opacity: 0,
               transition: {
-                delay: 0.15,
-                ease: [0.5, 0, 0, 1],
+                ...fruitTransition,
+                delay: 0.1,
               },
             },
             hover: {
@@ -113,8 +118,7 @@ export function ProductCard({ product }: { product: Product }) {
               scale: 1,
               opacity: 1,
               transition: {
-                delay: 0.15,
-                ease: [0.5, 0, 0, 1],
+                ...fruitTransition,
               },
             },
           }}
@@ -129,8 +133,8 @@ export function ProductCard({ product }: { product: Product }) {
               scale: 0,
               opacity: 0,
               transition: {
-                delay: 0.15,
-                ease: [0.5, 0, 0, 1],
+                ...fruitTransition,
+                delay: 0.2,
               },
             },
             hover: {
@@ -139,8 +143,7 @@ export function ProductCard({ product }: { product: Product }) {
               scale: 1,
               opacity: 1,
               transition: {
-                delay: 0.15,
-                ease: [0.5, 0, 0, 1],
+                ...fruitTransition,
               },
             },
           }}
@@ -155,8 +158,7 @@ export function ProductCard({ product }: { product: Product }) {
               scale: 0,
               opacity: 0,
               transition: {
-                delay: 0.15,
-                ease: [0.5, 0, 0, 1],
+                ...fruitTransition,
               },
             },
             hover: {
@@ -165,8 +167,7 @@ export function ProductCard({ product }: { product: Product }) {
               scale: 1,
               opacity: 1,
               transition: {
-                delay: 0.15,
-                ease: [0.5, 0, 0, 1],
+                ...fruitTransition,
               },
             },
           }}
@@ -201,17 +202,17 @@ export function ProductCard({ product }: { product: Product }) {
           rest: {
             y: 100,
             transition: {
+              type: 'spring',
+              bounce: 0.3,
               duration: 0.3,
-              type: 'tween',
-              ease: [0.5, 0, 0, 1],
             },
           },
           hover: {
             y: 0,
             transition: {
+              type: 'spring',
+              bounce: 0.3,
               duration: 0.3,
-              type: 'tween',
-              ease: [0.5, 0, 0, 1],
             },
           },
         }}

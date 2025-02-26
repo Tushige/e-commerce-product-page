@@ -1,4 +1,5 @@
 import AppBadge from './AppBadge';
+import AppTypeWriter from './AppTypeWriter';
 
 interface AppSectionTitleProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -20,7 +21,7 @@ export default function AppSectionTitle({
       </h2>
       {subtitle && (
         <h4 className="text-zinc-900 font-miera-demibold text-2xl md:text-3xl lg:text-4xl">
-          {subtitle}
+          <AppTypeWriter words={[subtitle]} repeat={0} className="" />
         </h4>
       )}
     </div>

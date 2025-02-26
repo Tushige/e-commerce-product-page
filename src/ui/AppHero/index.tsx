@@ -27,7 +27,7 @@ function ProductSection({ className }: { className?: string }) {
         <div className="image-1 animate-float z-[1]">
           <img
             src="images/sprout/strawberry.webp"
-            className="object-contain size-full max-w-[16rem] translate-x-[2rem] rotate-2 drop-shadow-button"
+            className="object-contain size-full max-w-[10rem] lg:max-w-[16rem] translate-x-[2rem] rotate-2 drop-shadow-button"
           />
         </div>
         <div
@@ -38,7 +38,7 @@ function ProductSection({ className }: { className?: string }) {
         >
           <img
             src="images/sprout/blueberry.webp"
-            className="object-contain size-full max-w-[16rem] translate-x-[-2rem] rotate-6 drop-shadow-xl"
+            className="object-contain size-full max-w-[10rem] lg:max-w-[16rem] translate-x-[-2rem] rotate-6 drop-shadow-xl"
           />
         </div>
       </div>
@@ -70,10 +70,9 @@ function HeroContentSection({ className }: { className?: string }) {
         <div className="text-4xl lg:text-6xl">Superfood smoothies made</div>
         <AppTypeWriter
           words={animatedWords}
-          fps={10}
-          className="text-4xl lg:text-6xl"
+          className="text-4xl lg:text-6xl underline"
         />
-        <p className="text-2xl text-wrap font-miera-book mt-8 text-center lg:text-left">
+        <p className="text-lg lg:text-2xl text-wrap font-miera-book mt-8 text-center lg:text-left">
           nutritious & delicious smoothies that blend effortlessly into your
           life
         </p>

@@ -14,7 +14,7 @@ export default function AppButtonLink({
     <a
       href={href}
       className={cn(
-        'bg-white rounded rounded-full px-6 py-2 flex items-center justify-center hover:scale-[1.03] duration-300 hover:drop-shadow-button text-slate-700 text-lg font-miera-demibold',
+        'bg-white rounded-full px-6 py-2 flex items-center justify-center hover:scale-[1.03] duration-300 hover:drop-shadow-button text-slate-700 text-lg font-miera-demibold',
         className
       )}
     >

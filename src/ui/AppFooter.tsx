@@ -1,61 +1,62 @@
 import AppAccordion from '../components/AppAccordion';
+import AppLink from '../components/AppLink';
 import InstagramLogo from '../components/InstagramLogo';
 import SproutLogo from '../components/SproutLogo';
 import YoutubeLogo from '../components/YoutubeLogo';
-
+import { motion } from 'motion/react';
 const sections = [
   {
     title: 'shop',
     id: '1',
     contents: [
-      <a
+      <AppLink
         href="#"
-        className="text-tertiary hover:text-primary-foreground hover:underline"
+        className="text-tertiary font-meria-regular hover:text-primary-foreground mt-2"
       >
-        Best Sellers
-      </a>,
-      <a
+        best sellers
+      </AppLink>,
+      <AppLink
         href="#"
-        className="text-tertiary hover:text-primary-foreground hover:underline"
+        className="text-tertiary font-meria-regular hover:text-primary-foreground"
       >
-        Immune Support
-      </a>,
+        immune support
+      </AppLink>,
     ],
   },
   {
     title: 'about us',
     id: '2',
     contents: [
-      <a
+      <AppLink
         href="#"
-        className="text-tertiary hover:text-primary-foreground hover:underline"
+        className="text-tertiary font-meria-regular hover:text-primary-foreground mt-2"
       >
         our story
-      </a>,
-      <a
+      </AppLink>,
+      <AppLink
         href="#"
-        className="text-tertiary hover:text-primary-foreground hover:underline"
+        className="text-tertiary font-meria-regular hover:text-primary-foreground"
       >
         store locator
-      </a>,
+      </AppLink>,
     ],
   },
   {
     title: 'legal',
     id: '3',
     contents: [
-      <a
+      <AppLink
         href="#"
-        className="text-tertiary hover:text-primary-foreground hover:underline"
+        className="text-tertiary font-meria-regular hover:text-primary-foreground mt-2"
       >
         terms & conditions
-      </a>,
-      <a
+      </AppLink>,
+      <AppLink
         href="#"
-        className="text-tertiary hover:text-primary-foreground hover:underline"
+        className="text-tertiary font-meria-regular hover:text-primary-foreground"
       >
         privacy policy
-      </a>,
+      </AppLink>,
     ],
   },
 ];
@@ -63,7 +64,7 @@ export default function AppFooter() {
   return (
     <section className="bg-accent p-8 rounded-t-[2rem]">
       <div className="grid grid-cols-12 text-primary-foreground bg-white p-8 rounded-[2rem]">
-        <div className="col-span-12 max-w-[500px] lg:col-span-4 flex flex-col gap-2 pr-12">
+        <div className="col-span-12 w-full max-w-[500px] items-stretch justify-self-center lg:justify-self-start lg:col-span-4 flex flex-col gap-2 pr-0 lg:pr-12">
           <h2 className="text-2xl lg:text-4xl font-miera-demibold">
             get 10% off your order!
           </h2>
@@ -73,13 +74,13 @@ export default function AppFooter() {
             placeholder="email address"
             className="max-w-[100%] bg-white rounded-[4rem] border-1 px-4 py-2"
           />
-          <button className="bg-primary mt-4 place-self-center w-fit cursor-pointer rounded rounded-full px-6 py-2 flex items-center justify-center hover:scale-[1.03] duration-300 hover:drop-shadow-button text-slate-700 text-lg font-miera-demibold">
+          <button className="bg-primary mt-4 place-self-center w-fit cursor-pointer rounded-full px-6 py-2 flex items-center justify-center hover:scale-[1.03] duration-300 hover:drop-shadow-button text-slate-700 text-lg font-miera-demibold">
             subscribe
           </button>
         </div>
-        <div className="col-span-12 lg:col-span-4 max-w-[600px]">
+        <motion.div className="col-span-12 lg:col-span-4 w-full max-w-[600px] justify-self-center lg:justify-self-start">
           <AppAccordion sections={sections} />
-        </div>
+        </motion.div>
       </div>
       <div className="grid grid-cols-12 gap-[2rem] lg:gap-0 mt-18 lg:mt-[12rem] ">
         <div className="col-span-12 md:col-span-4 w-full flex justify-center lg:justify-start gap-2">
