@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
-import AppleLogo from '@components/AppleLogo';
-import BlueberryLogo from '@components/BlueberryLogo';
-import StrawberryLogo from '@components/StrawberryLogo';
+import StrawberryLogo from '../components/StrawberryLogo';
+import BlueberryLogo from '../components/BlueberryLogo';
+import AppleLogo from '../components/AppleLogo';
 
 // mock data for module 1
 export const module1Extension = [
@@ -70,9 +70,8 @@ export const module1Extension = [
   },
 ];
 
-let nextId = 0;
 const createBlueberry = () => ({
-  id: nextId++,
+  id: uuidv4(),
   imageSrc: 'images/sprout/blueberry.webp',
   title: 'Blueberry Delight',
   subtitle: '+ prebiotic fiber',
@@ -88,7 +87,7 @@ const createBlueberry = () => ({
   },
 });
 const createStrawberry = () => ({
-  id: nextId++,
+  id: uuidv4(),
   imageSrc: 'images/sprout/strawberry.webp',
   title: 'Strawberry Burst',
   subtitle: '+ antioxidant',
@@ -104,7 +103,7 @@ const createStrawberry = () => ({
   },
 });
 const createMango = () => ({
-  id: nextId++,
+  id: uuidv4(),
   imageSrc: 'images/sprout/mango.webp',
   title: 'Mango Breeze',
   subtitle: '+ immune support',

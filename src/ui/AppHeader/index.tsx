@@ -11,7 +11,6 @@ import { cn } from '../../utils';
 import { motion } from 'motion/react';
 import { useRef, useState } from 'react';
 import AppNotificationBar from '../../components/AppNotificationBar';
-import { flushSync } from 'react-dom';
 
 const notificationItems = [
   'SHOP NOW',
@@ -25,7 +24,7 @@ const notificationItems = [
 const SCROLL_OFFSET_TRIGGER = 100;
 export default function AppHeader({ className }: { className?: string }) {
   const headerRef = useRef(null);
-  const { scrollY, scrollYProgress } = useScroll({
+  const { scrollY } = useScroll({
     target: headerRef,
     offset: ['start start', 'end end'],
   });

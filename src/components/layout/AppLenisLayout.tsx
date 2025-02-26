@@ -1,4 +1,4 @@
-import { ReactLenis, useLenis } from 'lenis/react';
+import { ReactLenis } from 'lenis/react';
 
 interface AppLenisLayoutProps extends React.HTMLAttributes<HTMLDivElement> {}
 export default function AppLenisLayout({ children }: AppLenisLayoutProps) {

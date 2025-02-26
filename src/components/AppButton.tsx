@@ -4,11 +4,7 @@ import { cn } from '../utils';
 interface AppButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
-export default function AppButton({
-  children,
-  className,
-  ...props
-}: AppButtonProps) {
+export default function AppButton({ children, className }: AppButtonProps) {
   return (
     <motion.button
       initial={{
@@ -31,7 +27,6 @@ export default function AppButton({
         'bg-primary font-miera-demibold rounded-2xl p-2 cursor-pointer text-md lg:text-lg',
         className
       )}
-      {...props}
     >
       {children}
     </motion.button>

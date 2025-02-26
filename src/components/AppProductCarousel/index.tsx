@@ -27,7 +27,7 @@ export default function AppProductCarousel({
 }) {
   const [visibleItemsSet, setVisibleItemsSet] = useState(new Set<number>());
   const containerRef = useRef(null);
-  const productRefs = useRef<Element[]>(
+  const productRefs = useRef<HTMLElement[] | null>(
     Array.from({ length: products.length || 0 })
   );
   useEffect(() => {
@@ -39,7 +39,8 @@ export default function AppProductCarousel({
       (entries) => {
         entries.forEach((entry) => {
           if (!productRefs.current) return;
-          const idx = entry.target.dataset['idx'];
+          const htmlElement = entry.target as HTMLElement;
+          const idx = Number(htmlElement.dataset['idx']);
           if (entry.isIntersecting) {
             flushSync(() => {
               setVisibleItemsSet((prev) => new Set([...Array.from(prev), idx]));
@@ -60,11 +61,11 @@ export default function AppProductCarousel({
         threshold: 0.9,
       }
     );
-    productRefs.current.forEach((product) => {
+    productRefs.current!.forEach((product) => {
       if (product) observer.observe(product);
     });
     return () => {
-      productRefs.current.forEach((product) => {
+      productRefs.current!.forEach((product) => {
         if (product) observer.unobserve(product);
       });
     };
@@ -73,7 +74,7 @@ export default function AppProductCarousel({
   const prevDisabled = getMinFromSet(visibleItemsSet) === 0;
   const goPrev = () => {
     const minVisibleIdx = getMinFromSet(visibleItemsSet);
-    if (minVisibleIdx === 0) return;
+    if (minVisibleIdx === 0 || !productRefs.current) return;
     productRefs.current[minVisibleIdx - 1].scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
@@ -82,7 +83,7 @@ export default function AppProductCarousel({
   };
   const goNext = () => {
     const maxVisibleIdx = getMaxFromSet(visibleItemsSet);
-    if (maxVisibleIdx + 1 >= products.length) return;
+    if (!productRefs.current || maxVisibleIdx + 1 >= products.length) return;
     productRefs.current[maxVisibleIdx + 1].scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
@@ -137,7 +138,7 @@ export default function AppProductCarousel({
               key={idx}
               data-idx={idx}
               ref={(el) => {
-                productRefs.current[idx] = el;
+                if (el) productRefs.current![idx] = el;
               }}
             >
               <ProductCard product={product} />

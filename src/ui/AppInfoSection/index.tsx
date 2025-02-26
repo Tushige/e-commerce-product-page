@@ -1,14 +1,19 @@
 import AppLinkCard from '../../components/AppLinkCard';
 import { motion } from 'motion/react';
 import { use3VueData } from '../../api/use3VueData';
+import { AppLinkCard as AppLinkCardType } from '../../types';
+
 export default function AppInfoSection() {
-  const { module2, isLoading, error } = use3VueData();
+  const { module2, isLoading, isError } = use3VueData();
   if (isLoading) {
     return <div>loading</div>;
   }
+  if (isError) {
+    return <div className="text-red-500 font-miera-bold">Please try again</div>;
+  }
   return (
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-12 lg:mt-[24rem]">
-      {module2.map((card, idx) => (
+      {module2.map((card: AppLinkCardType, idx: number) => (
         <motion.li
           key={card.id}
           className="w-full"

@@ -1,8 +1,8 @@
 import AppProductCarousel from '../../components/AppProductCarousel';
 
-import { productList } from '@data/mock-data';
 import { cn } from '../../utils';
 import AppSectionTitle from '../../components/AppSectionTitle';
+import { productList } from '../../data/mock-data';
 
 type AppProductsListProps = {
   className?: string;

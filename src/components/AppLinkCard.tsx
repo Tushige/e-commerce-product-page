@@ -1,12 +1,7 @@
+import { AppLinkCard as AppLinkCardType } from '../types';
 import AppButtonLink from './AppButtonLink';
 type AppLinkCardProps = {
-  card: {
-    title: string;
-    subtitle: string;
-    linkUrl: string;
-    linkTitle: string;
-    imageUrl: string;
-  };
+  card: AppLinkCardType;
 };
 export default function AppLinkCard({ card }: AppLinkCardProps) {
   const { title, subtitle, imageUrl, linkTitle, linkUrl } = card;

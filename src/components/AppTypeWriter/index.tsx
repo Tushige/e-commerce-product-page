@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
-import { animate } from 'motion';
-import { motion, useInView, useMotionValue, useTransform } from 'motion/react';
+import { useState } from 'react';
+import { animate } from 'motion/react';
+import { motion, useMotionValue, useTransform } from 'motion/react';
 import { useEffect } from 'react';
 import { cn } from '../../utils';
 

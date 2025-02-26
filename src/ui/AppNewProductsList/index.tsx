@@ -1,9 +1,10 @@
-import { JSXElementConstructor, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import AppBadge from '../../components/AppBadge';
 import AppSectionTitle from '../../components/AppSectionTitle';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { cn, getRandomint } from '../../utils';
 import { use3VueData } from '../../api/use3VueData';
+import { AppProduct } from '../../types';
 
 const DEFAULT_CONTAINER_HEIGHT = 3800;
 
@@ -74,7 +75,7 @@ export default function AppNewProductsList() {
         className="my-12 mb-24 text-center"
       />
       <div className="flex flex-col gap-[4rem] lg:gap-[24rem]">
-        {module1.subContent.map((product) => {
+        {module1.subContent.map((product: AppProduct) => {
           return <ProductItem key={product.id} product={product} />;
         })}
       </div>
@@ -83,20 +84,7 @@ export default function AppNewProductsList() {
 }
 
 type ProductItemProps = {
-  product: {
-    id: string;
-    title: string;
-    description: string;
-    productImageSrc: string;
-    imageUrl: string;
-    features: [
-      {
-        text: string;
-        icon: JSXElementConstructor<null>;
-        iconBgColor: string;
-      },
-    ];
-  };
+  product: AppProduct;
 };
 
 function ProductItem({ product }: ProductItemProps) {
@@ -134,15 +122,15 @@ function ProductItem({ product }: ProductItemProps) {
           src={productImageSrc}
           className="hidden lg:block w-[12rem] lg:w-[18rem] absolute left-[50%] translate-x-[-50%] translate-y-[50%] drop-shadow-button animate-float"
           style={{
-            animationDelay: `${product.id / 100}s`,
+            animationDelay: `${Number(product.id) / 100}s`,
           }}
         />
         {/**display on mobile */}
         <img
           src={productImageSrc}
-          className="w-[16rem] m-auto animate-float drop-shadow-button lg:hidden animate-float"
+          className="w-[16rem] m-auto animate-float drop-shadow-button lg:hidden"
           style={{
-            animationDelay: `${product.id / 100}s`,
+            animationDelay: `${Number(product.id) / 100}s`,
           }}
         />
       </motion.div>

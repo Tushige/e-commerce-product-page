@@ -13,7 +13,7 @@ export interface AppBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function AppBadge({
   className,
   enterFromBottom,
-  ...props
+  children,
 }: AppBadgeProps) {
   return (
     <motion.div
@@ -28,11 +28,17 @@ export default function AppBadge({
       whileInView={{
         y: 0,
         opacity: 1,
+        transition: {
+          type: 'spring',
+          bounce: 0.3,
+          duration: 0.5,
+        },
       }}
       viewport={{
         once: true,
       }}
-      {...props}
-    />
+    >
+      {children}
+    </motion.div>
   );
 }

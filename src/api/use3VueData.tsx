@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import { v4 as uuidv4 } from 'uuid';
-import { module1Extension, module2Extension } from '@data/mock-data';
+import { module1Extension, module2Extension } from '../data/mock-data';
 
 // for simulating slow connection
 // const fetcher = async (url) => {
@@ -11,7 +11,7 @@ import { module1Extension, module2Extension } from '@data/mock-data';
 //   });
 // };
 
-const fetcher = async (url) => fetch(url).then((res) => res.json());
+const fetcher = async (url: string) => fetch(url).then((res) => res.json());
 
 export function use3VueData() {
   const { data, error, isLoading } = useSWR(
@@ -27,7 +27,7 @@ export function use3VueData() {
     2. productImageSrc
     3. features
   */
-  module1.subContent = module1?.subContent?.map((item, idx) => {
+  module1.subContent = module1?.subContent?.map((item: any, idx: number) => {
     return {
       ...item,
       ...module1Extension[idx],
