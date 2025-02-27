@@ -28,11 +28,12 @@ export default function AppLink({ href, className, children }: AppLinkProps) {
     <motion.a
       href={href}
       className={cn(
-        'bg-white w-fit flex flex-col items-centerduration-300 text-slate-700 text-md lg:text-md font-miera-demibold',
+        'bg-white w-fit flex flex-col items-centerduration-300 text-primary-foreground text-md lg:text-md font-miera-demibold',
         className
       )}
       animate="rest"
       whileHover="hover"
+      whileTap="hover"
     >
       <span>{children}</span>
       <motion.div variants={variants} className="bg-primary h-[2px]" />

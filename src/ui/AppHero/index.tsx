@@ -6,9 +6,9 @@ import './styles.css';
 
 const animatedWords = ['delicious', 'healthy', 'portable'];
 
-const AppHero = ({}) => {
+const AppHero = () => {
   return (
-    <div className="size-full min-h-[90vh] flex flex-col items-center justify-center relative">
+    <div className="size-full min-h-[100vh] flex flex-col items-center justify-center relative pb-[2rem]">
       <HeroBackdropContent className="absolute top-0 left-0 size-full z-[0]" />
       <div className="relative grid grid-cols-10">
         <HeroContentSection className="col-span-10 lg:col-span-4 flex flex-col gap-y-4" />
@@ -26,7 +26,7 @@ function ProductSection({ className }: { className?: string }) {
         <div className="image-1 animate-float z-[1]">
           <img
             src="images/sprout/strawberry.webp"
-            className="object-contain size-full max-w-[10rem] lg:max-w-[16rem] translate-x-[2rem] rotate-2 drop-shadow-button"
+            className="object-contain size-full max-w-[8rem] lg:max-w-[16rem] translate-x-[2rem] rotate-2 drop-shadow-button"
           />
         </div>
         <div
@@ -37,7 +37,7 @@ function ProductSection({ className }: { className?: string }) {
         >
           <img
             src="images/sprout/blueberry.webp"
-            className="object-contain size-full max-w-[10rem] lg:max-w-[16rem] translate-x-[-2rem] rotate-6 drop-shadow-xl"
+            className="object-contain size-full max-w-[8rem] lg:max-w-[16rem] translate-x-[-2rem] rotate-6 drop-shadow-xl"
           />
         </div>
       </div>
@@ -77,7 +77,12 @@ function HeroContentSection({ className }: { className?: string }) {
         </p>
         <div className="mt-8 flex justify-center lg:justify-start">
           <div className="inline-block">
-            <AppButtonLink href="#" text="shop smoothies" />
+            <AppButtonLink
+              href="#"
+              className="drop-shadow-button border-2 border-amber-400"
+            >
+              shop smoothies
+            </AppButtonLink>
           </div>
         </div>
       </div>

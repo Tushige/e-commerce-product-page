@@ -23,6 +23,14 @@ export default function AppButton({ children, className }: AppButtonProps) {
           duration: 0.3,
         },
       }}
+      whileTap={{
+        scale: 0.9,
+        transition: {
+          type: 'spring',
+          bounce: 1.5,
+          duration: 0.3,
+        },
+      }}
       className={cn(
         'bg-primary font-miera-demibold rounded-2xl p-2 cursor-pointer text-md lg:text-lg',
         className

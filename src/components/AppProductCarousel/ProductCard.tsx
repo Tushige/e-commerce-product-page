@@ -89,18 +89,19 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <motion.div
       className={cn(
-        'relative w-[350px] h-[500px] flex flex-col rounded-[2rem] p-4 items-center justify-evenly overflow-hidden z-[0]'
+        'relative w-[300px] lg:w-[350px] h-[500px] flex flex-col rounded-[2rem] p-4 items-center justify-evenly overflow-hidden z-[0]'
       )}
       style={{
         backgroundColor: product.styles.backgroundColor || 'bg-blue-400',
       }}
       whileHover="hover"
+      whileTap="hover"
       animate="rest"
     >
       <div className="--fruits">
         <motion.img
           src={product.backdropImages.left}
-          className="absolute top-[50%] left-[50%] object-contain w-24 z-[0] animate-spin drop-shadow-xl"
+          className="absolute top-[50%] left-[50%] object-contain w-24 z-[0] animate-spin drop-shadow-xl pointer-events-none"
           variants={{
             rest: {
               top: '50%',
@@ -217,10 +218,7 @@ export function ProductCard({ product }: { product: Product }) {
           },
         }}
       >
-        <AppButtonLink
-          href="#"
-          text={`Add to Cart - $${product.price / 100}`}
-        ></AppButtonLink>
+        <AppButtonLink href="#">{`Add to Cart - $${product.price / 100}`}</AppButtonLink>
       </motion.div>
     </motion.div>
   );

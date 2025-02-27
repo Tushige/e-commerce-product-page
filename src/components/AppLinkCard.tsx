@@ -11,7 +11,7 @@ export default function AppLinkCard({ card }: AppLinkCardProps) {
       <div className="absolute w-full top-[50%] translate-y-[-50%] flex flex-col gap-2 text-white items-center justify-center p-2 lg:p-4">
         <span className="font-miera-bold text-2xl lg:text-4xl">{title}</span>
         <span className="font-miera-demibold">{subtitle}</span>
-        <AppButtonLink href={linkUrl} text={linkTitle} />
+        <AppButtonLink href={linkUrl}>{linkTitle}</AppButtonLink>
       </div>
     </div>
   );

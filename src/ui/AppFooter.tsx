@@ -72,11 +72,21 @@ export default function AppFooter() {
           <input
             type="text"
             placeholder="email address"
-            className="max-w-[100%] bg-white rounded-[4rem] border-1 px-4 py-2"
+            className="max-w-[100%] bg-white rounded-[4rem] border-primary-foreground border-[2px] px-4 py-2"
           />
-          <button className="bg-primary mt-4 place-self-center w-fit cursor-pointer rounded-full px-6 py-2 flex items-center justify-center hover:scale-[1.03] duration-300 hover:drop-shadow-button text-slate-700 text-lg font-miera-demibold">
+          <motion.button
+            className="bg-primary mt-4 place-self-center w-fit cursor-pointer rounded-full px-6 py-2 flex items-center justify-center hover:scale-[1.03] duration-300 hover:drop-shadow-button text-primary-foreground text-lg font-miera-demibold"
+            whileTap={{
+              scale: 0.8,
+              transition: {
+                type: 'spring',
+                bounce: 0.4,
+                duration: 0.3,
+              },
+            }}
+          >
             subscribe
-          </button>
+          </motion.button>
         </div>
         <motion.div className="col-span-12 lg:col-span-4 w-full max-w-[600px] justify-self-center lg:justify-self-start">
           <AppAccordion sections={sections} />
