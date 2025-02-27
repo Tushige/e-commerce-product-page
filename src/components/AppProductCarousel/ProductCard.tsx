@@ -5,7 +5,13 @@ import { cn } from '../../utils';
 
 const ANIMATION_SHIFT_Y = 30;
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  className,
+}: {
+  product: Product;
+  className?: string;
+}) {
   const fruitTransition = {
     type: 'spring',
     duration: 0.5,
@@ -89,7 +95,8 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <motion.div
       className={cn(
-        'relative w-[300px] lg:w-[350px] h-[500px] flex flex-col rounded-[2rem] p-4 items-center justify-evenly overflow-hidden z-[0]'
+        'relative w-[300px] lg:w-[350px] h-[500px] flex flex-col rounded-[2rem] p-4 items-center justify-evenly overflow-hidden z-[0]',
+        className
       )}
       style={{
         backgroundColor: product.styles.backgroundColor || 'bg-blue-400',

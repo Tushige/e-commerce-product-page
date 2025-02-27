@@ -3,6 +3,7 @@ import AppProductCarousel from '../../components/AppProductCarousel';
 import { cn } from '../../utils';
 import AppSectionTitle from '../../components/AppSectionTitle';
 import { productList } from '../../data/mock-data';
+import AppDraggableCarousel from '../../components/AppProductCarousel/AppDraggableCarousel';
 
 type AppProductsListProps = {
   className?: string;
@@ -21,7 +22,12 @@ export default function AppProductsList({ className }: AppProductsListProps) {
         badgeText="best sellers"
         className="flex flex-col items-center"
       />
-      <AppProductCarousel products={productList} />
+      <div className="lg:hidden w-full">
+        <AppDraggableCarousel products={productList} />
+      </div>
+      <div className="hidden lg:block w-full">
+        <AppProductCarousel products={productList} />
+      </div>
     </div>
   );
 }

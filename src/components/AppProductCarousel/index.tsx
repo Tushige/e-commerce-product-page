@@ -10,14 +10,14 @@ function getMinFromSet(s: Set<number>) {
   for (const val of s) {
     minVal = Math.min(minVal, val);
   }
-  return minVal;
+  return minVal === Infinity ? -1 : minVal;
 }
 function getMaxFromSet(s: Set<number>) {
   let maxVal = -Infinity;
   for (const val of s) {
     maxVal = Math.max(maxVal, val);
   }
-  return maxVal;
+  return maxVal === -Infinity ? Infinity : maxVal;
 }
 
 export default function AppProductCarousel({
@@ -74,7 +74,8 @@ export default function AppProductCarousel({
   const prevDisabled = getMinFromSet(visibleItemsSet) === 0;
   const goPrev = () => {
     const minVisibleIdx = getMinFromSet(visibleItemsSet);
-    if (minVisibleIdx === 0 || !productRefs.current) return;
+    if (minVisibleIdx <= 0 || !productRefs.current) return;
+    console.log(minVisibleIdx - 1);
     productRefs.current[minVisibleIdx - 1].scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
@@ -132,9 +133,9 @@ export default function AppProductCarousel({
         </motion.button>
       </div>
       <div className="max-w-[100vw] overflow-hidden p-8 relative">
-        <ul className="flex gap-4 overflow-hidden">
+        <motion.ul className="flex gap-4 overflow-hidden">
           {products.map((product: Product, idx: number) => (
-            <li
+            <motion.li
               key={idx}
               data-idx={idx}
               ref={(el) => {
@@ -142,9 +143,9 @@ export default function AppProductCarousel({
               }}
             >
               <ProductCard product={product} />
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </div>
     </div>
   );
