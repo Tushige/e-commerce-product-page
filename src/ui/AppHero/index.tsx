@@ -79,7 +79,7 @@ function HeroContentSection({ className }: { className?: string }) {
           <div className="inline-block">
             <AppButtonLink
               href="#"
-              className="drop-shadow-button border-2 border-amber-400"
+              className="drop-shadow-button border-2 border-primary-foreground"
             >
               shop smoothies
             </AppButtonLink>
