@@ -2,15 +2,6 @@ import useSWR from 'swr';
 import { v4 as uuidv4 } from 'uuid';
 import { module1Extension, module2Extension } from '../data/mock-data';
 
-// for simulating slow connection
-// const fetcher = async (url) => {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(fetch(url).then((res) => res.json()));
-//     }, 10000);
-//   });
-// };
-
 const fetcher = async (url: string) => fetch(url).then((res) => res.json());
 
 export function use3VueData() {
