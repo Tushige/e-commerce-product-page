@@ -72,7 +72,7 @@ export default function AppNewProductsList() {
       </div>
       <AppSectionTitle
         title="Introducing"
-        className="my-12 mb-24 text-center"
+        className="my-8 lg:my-12 text-center"
       />
       <div className="flex flex-col gap-[4rem] lg:gap-[24rem]">
         {module1.subContent.map((product: AppProduct) => {

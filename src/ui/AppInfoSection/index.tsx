@@ -12,7 +12,7 @@ export default function AppInfoSection() {
     return <div className="text-red-500 font-miera-bold">Please try again</div>;
   }
   return (
-    <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-12 lg:mt-[24rem]">
+    <ul className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 lg:mt-[24rem]">
       {module2.map((card: AppLinkCardType, idx: number) => (
         <motion.li
           key={card.id}
