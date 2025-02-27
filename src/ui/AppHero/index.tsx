@@ -25,7 +25,7 @@ function ProductSection({ className }: { className?: string }) {
       <div className="images flex items-center lg:items-start justify-center lg:justify-end">
         <div className="image-1 animate-float z-[1]">
           <img
-            src="images/sprout/strawberry.webp"
+            src="images/sprout/strawberry.png"
             className="object-contain size-full max-w-[8rem] lg:max-w-[16rem] translate-x-[2rem] rotate-2 drop-shadow-button"
           />
         </div>
@@ -36,7 +36,7 @@ function ProductSection({ className }: { className?: string }) {
           }}
         >
           <img
-            src="images/sprout/blueberry.webp"
+            src="images/sprout/blueberry.png"
             className="object-contain size-full max-w-[8rem] lg:max-w-[16rem] translate-x-[-2rem] rotate-6 drop-shadow-xl"
           />
         </div>
