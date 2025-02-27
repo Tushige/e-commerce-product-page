@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { flushSync } from 'react-dom';
 import AppArrowIcon from '../AppArrowIcon';
 import { Product } from './types';
 import { ProductCard } from './ProductCard';
@@ -42,16 +41,11 @@ export default function AppProductCarousel({
           const htmlElement = entry.target as HTMLElement;
           const idx = Number(htmlElement.dataset['idx']);
           if (entry.isIntersecting) {
-            flushSync(() => {
-              setVisibleItemsSet((prev) => new Set([...Array.from(prev), idx]));
-            });
+            setVisibleItemsSet((prev) => new Set([...Array.from(prev), idx]));
           } else {
-            flushSync(() => {
-              setVisibleItemsSet(
-                (prev) =>
-                  new Set([...Array.from(prev).filter((i) => i !== idx)])
-              );
-            });
+            setVisibleItemsSet(
+              (prev) => new Set([...Array.from(prev).filter((i) => i !== idx)])
+            );
           }
         });
       },
