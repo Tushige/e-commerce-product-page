@@ -133,7 +133,7 @@ export function ProductCard({
         />
         <motion.img
           src={product.backdropImages.right}
-          className="absolute top-[50%] left-[50%] object-contain w-24 z-[0] animate-spin drop-shadow-xl"
+          className="absolute top-[50%] left-[50%] object-contain w-24 z-[0] animate-spin drop-shadow-xl pointer-events-none"
           variants={{
             rest: {
               top: '50%',
@@ -158,7 +158,7 @@ export function ProductCard({
         />
         <motion.img
           src={product.backdropImages.bottom}
-          className="absolute top-[50%] left-[50%] object-contain w-20 z-[0] animate-spin drop-shadow-xl"
+          className="absolute top-[50%] left-[50%] object-contain w-20 z-[0] animate-spin drop-shadow-xl pointer-events-none"
           variants={{
             rest: {
               top: '50%',
@@ -202,7 +202,7 @@ export function ProductCard({
       </div>
       <motion.img
         src={product.imageSrc}
-        className="object-contain h-[70%] aspect-auto align-bottom z-[1] drop-shadow-button"
+        className="object-contain h-[70%] aspect-auto align-bottom z-[1] drop-shadow-button pointer-events-none"
         variants={imageVariants}
       />
       <motion.div

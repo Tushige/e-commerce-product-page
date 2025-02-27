@@ -128,7 +128,7 @@ function ProductItem({ product }: ProductItemProps) {
         {/**display on mobile */}
         <img
           src={productImageSrc}
-          className="w-[16rem] m-auto animate-float drop-shadow-button lg:hidden"
+          className="w-[16rem] m-auto animate-float drop-shadow-button lg:hidden pointer-events-none"
           style={{
             animationDelay: `${Number(product.id) / 100}s`,
           }}
